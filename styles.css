@@ -1,0 +1,45 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-wrapper {
+    text-align: center;
+}
+
+
+h1 {
+    margin-bottom: 10px;
+}
+
+label,
+input[type="date"],
+button {
+    margin-bottom: 10px;
+}
+
+input, select{
+    border-radius: 0;
+}
+
+#oldResults {
+    opacity: .4;
+}
+
+.calculateButton {
+    background-color: rgb(200, 103, 163);
+}
+
+button, select {
+    margin-bottom: 10px;
+    border-style: outset;
+    border-width: 2px;
+    padding: 3px;
+}
+
+button:active , select:active{
+    border-style: inset;
+}

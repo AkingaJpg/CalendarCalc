@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>CalendarCalc</title>
-  
-</head>
-<body>
-  <h1>Date Interval Calculator</h1>
-  <label for="start-date">Start Date:</label>
-  <input type="date" id="start-date"><br>
-  <label for="end-date">End Date:</label>
-  <input type="date" id="end-date"><br>
-  <button onclick="calculateInterval()">Calculate</button>
-  <p id="result"></p>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
   <script src="index.js"></script>
+  <title>CalendarCalc</title>
+</head>
+
+<body onload="showOldResults()">
+  <div class="center-wrapper">
+    <h1>CalendarCalculator</h1>
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date"><br>
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date"><br>
+
+    <select name="dayFilter" id="dayFilter">
+      <option value="all">all</option>
+      <option value="weekdays">weekdays</option>
+      <option value="weekenddays">weekend</option>
+    </select>
+
+
+    <select name="unit" id="unit">
+      <option value="months">months</option>
+      <option value="weeks">weeks</option>
+      <option value="days">days</option>
+      <option value="hours">hours</option>
+      <option value="minutes">minutes</option>
+      <option value="seconds">seconds</option>
+    </select>
+    <button onclick="selectPreset('weeks')">Select week</button>
+    <button onclick="selectPreset('months')">Select months</button>
+    <button onclick="calculateInterval()" class="calculateButton">Calculate</button>
+    <p id="result"></p><br />
+    <p id="oldResults"></p>
+  </div>
 </body>
+
 </html>
