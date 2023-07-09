@@ -9,8 +9,37 @@
 
 
 "use strict"
+
+const startDateInput = document.getElementById('start-date');
+const endDateInput = document.getElementById('end-date');
+const unitElement = document.getElementById('unit');
+const dayFilterElement = document.getElementById('dayFilter');
+const resultElement = document.getElementById('result');
+
+startDateInput.addEventListener('change', setMin);
+endDateInput.addEventListener('change', setMax);
+
+function setMin() {
+  endDateInput.setAttribute('min', startDateInput.value);
+}
+function setMax () {
+  startDateInput.setAttribute('max', endDateInput.value);
+}
+
+function presetWeek() {
+  const startDate = new Date(startDateInput.value);
+  startDate.setDate(startDate.getDate() + 7);
+  endDateInput.valueAsNumber = startDate;
+}
+
+function presetMonth() {
+  const startDate = new Date(startDateInput.value);
+  startDate.setMonth(startDate.getMonth() + 1);
+  endDateInput.valueAsNumber = startDate;
+}
+
 function selectPreset(unit) {
-  document.getElementById('unit').value = unit;
+  unitElement.value = unit;
 }
 
 function isWeekend(date) {
@@ -45,24 +74,21 @@ function pushToLocalStorage(result) {
 
 function calculateInterval() {
 
-  const startDateInput = document.getElementById('start-date').value;
-  const endDateInput = document.getElementById('end-date').value;
-  const unit = document.getElementById('unit').value;
-  const dayFilter = document.getElementById('dayFilter').value;
-
-  const startDate = new Date(startDateInput);
-  const endDate = new Date(endDateInput);
+  const startDate = new Date(startDateInput.value);
+  const endDate = new Date(endDateInput.value);
+  const dayFilter = dayFilterElement.value;
+  const unit = unitElement.value;
 
   if (startDate > endDate) {
-    document.getElementById("result").innerHTML = "The end date needs to be bigger then the start date.";
+    resultElement.innerHTML = "The end date needs to be bigger then the start date.";
     return;
   }
 
   if (dayFilter !== 'all' && unit !== 'month' && unit !== 'week') {
-    document.getElementById("result").innerHTML = "You can not combine weekdays/weekenddays with month and weeks :(";
+    resultElement.innerHTML = "You can not combine weekdays/weekenddays with month and weeks :(";
     return;
   }
- 
+
 
   let filterFunc;
   switch (dayFilter) {
@@ -81,6 +107,7 @@ function calculateInterval() {
 
   const daysDiff = calculateDifference(startDate, endDate, filterFunc);
 
+  let result = 0;
   switch (unit) {
     case 'months':
       result = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
@@ -105,8 +132,8 @@ function calculateInterval() {
       break;
   }
   showOldResults();
-  document.getElementById("result").innerHTML = `The time interval is ${result} ${unit}.`;
-  pushToLocalStorage(document.getElementById("result").innerHTML);
+  resultElement.innerHTML = `The time interval is ${result} ${unit}.`;
+  pushToLocalStorage(resultElement.innerHTML);
 }
 
 

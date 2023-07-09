@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
-  <script src="index.js"></script>
   <title>CalendarCalc</title>
 </head>
 
@@ -32,12 +31,14 @@
       <option value="minutes">minutes</option>
       <option value="seconds">seconds</option>
     </select>
-    <button onclick="selectPreset('weeks')">Select week</button>
-    <button onclick="selectPreset('months')">Select months</button>
+    <button onclick="presetWeek()">In one week</button>
+    <button onclick="presetMonth()">In one month</button>
     <button onclick="calculateInterval()" class="calculateButton">Calculate</button>
     <p id="result"></p><br />
     <p id="oldResults"></p>
   </div>
+  <script src="index.js"></script>
+
 </body>
 
 </html>
