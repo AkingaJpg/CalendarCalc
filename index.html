@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <title>CalendarCalc</title>
+</head>
+
+<body>
+  <div class="center-wrapper">
+    <h1>CalendarCalculator</h1>
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date"><br>
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date"><br>
+
+    <select name="dayFilter" id="dayFilter">
+      <option value="all">all</option>
+      <option value="weekdays">weekdays</option>
+      <option value="weekenddays">weekend</option>
+    </select>
+
+
+    <select name="unit" id="unit">
+      <option value="months">months</option>
+      <option value="weeks">weeks</option>
+      <option value="days">days</option>
+      <option value="hours">hours</option>
+      <option value="minutes">minutes</option>
+      <option value="seconds">seconds</option>
+    </select>
+    <button id="presetWeekButton">In one week</button>
+    <button id="presetMonthButton">In one month</button>
+    <button id="calculateIntervalButton" class="calculateButton">Calculate</button>
+    <p id="result"></p><br />
+    <p id="oldResults"></p>
+  </div>
+  <script src="index.js"></script>
+
+</body>
+
+</html>
