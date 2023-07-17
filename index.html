@@ -8,7 +8,7 @@
   <title>CalendarCalc</title>
 </head>
 
-<body onload="showOldResults()">
+<body>
   <div class="center-wrapper">
     <h1>CalendarCalculator</h1>
     <label for="start-date">Start Date:</label>
@@ -31,9 +31,9 @@
       <option value="minutes">minutes</option>
       <option value="seconds">seconds</option>
     </select>
-    <button onclick="presetWeek()">In one week</button>
-    <button onclick="presetMonth()">In one month</button>
-    <button onclick="calculateInterval()" class="calculateButton">Calculate</button>
+    <button id="presetWeekButton">In one week</button>
+    <button id="presetMonthButton">In one month</button>
+    <button id="calculateIntervalButton" class="calculateButton">Calculate</button>
     <p id="result"></p><br />
     <p id="oldResults"></p>
   </div>
